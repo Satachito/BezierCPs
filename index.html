@@ -10,6 +10,8 @@
 
 const
 C2D = Canvas.getContext( '2d' )
+const
+Dot = ( x, y ) => C2D.fillRect( x -2, y - 2, 4, 4 )
 
 import BezierCPs from './BezierCPs.js'
 
@@ -19,7 +21,6 @@ $ = []
 const
 Draw = () => {
 	C2D.clearRect( 0, 0, Canvas.width, Canvas.height )
-	C2D.fillStyle = 'red'
 	if ( $.length > 3 ) {
 		C2D.beginPath()
 		C2D.moveTo( ...$[ 0 ] )
@@ -28,11 +29,12 @@ Draw = () => {
 		C2D.bezierCurveTo( xPQ[ 0 ], yPQ[ 0 ], xPQ[ 1 ], yPQ[ 1 ], ...$[ $.length - 1 ] )
 		C2D.strokeStyle = 'red'
 		C2D.stroke()
-		C2D.fillRect( xPQ[ 0 ] - 2, yPQ[ 0 ] - 2, 4, 4 )
-		C2D.fillRect( xPQ[ 1 ] - 2, yPQ[ 1 ] - 2, 4, 4 )
+		C2D.fillStyle = 'red'
+		Dot( xPQ[ 0 ], yPQ[ 0 ] )
+		Dot( xPQ[ 1 ], yPQ[ 1 ] )
 	}
 	C2D.fillStyle = 'black'
-	$.forEach( _ => C2D.fillRect( _[ 0 ] - 2, _[ 1 ] - 2, 4, 4 ) )
+	$.forEach( _ => Dot( _[ 0 ], _[ 1 ] ) )
 }
 
 Clear.onclick = () => ( $.length = 0, Draw() )
