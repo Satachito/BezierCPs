@@ -1,3 +1,18 @@
+# curve_fit 
+
+## Demo
+
+https://satachito.github.io/BezierCPs/
+
+## Install
+
+```
+npm install @satachito/curve_fit --save
+```
+
+## Usage
+
+```
 <!DOCTYPE html>
 <html lang=zxx>
 <title>Bezier - LeastSquares</title>
@@ -13,7 +28,7 @@ C2D = Canvas.getContext( '2d' )
 const
 Dot = ( x, y ) => C2D.fillRect( x -2, y - 2, 4, 4 )
 
-//	import CurveFit from './node_modules/@satachito/curve_fit/index.js'
+//import CurveFit from './node_modules/@satachito/curve_fit/index.js'
 
 //	With web-dev-server node resolver.
 //	npx web-dev-server --node-resolve --open
@@ -47,4 +62,5 @@ Clear.onclick = () => ( $.length = 0, Draw() )
 Canvas.onclick = ev => ( $.push( [ ev.offsetX, ev.offsetY ] ), Draw() )
 
 </script>
+```
 
