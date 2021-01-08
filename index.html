@@ -2,6 +2,7 @@
 <html lang=zxx>
 <title>Bezier - LeastSquares</title>
 
+<div>CLICK 4 or more points please.</div>
 <canvas id=Canvas width=500 height=500 style="border: 1px solid black"></canvas>
 <br>
 <button id=Clear>CLEAR</button>
@@ -13,12 +14,11 @@ C2D = Canvas.getContext( '2d' )
 const
 Dot = ( x, y ) => C2D.fillRect( x -2, y - 2, 4, 4 )
 
-//	import CurveFit from './node_modules/@satachito/curve_fit/index.js'
+import CurveFit from './node_modules/@satachito/curve_fit/index.js'
 
-//	With web-dev-server node resolver.
 //	npx web-dev-server --node-resolve --open
-//
-import CurveFit from '@satachito/curve_fit'
+//	With web-dev-server node resolver:
+//	import CurveFit from '@satachito/curve_fit'
 
 const
 $ = []
