@@ -1,0 +1,26 @@
+{
+  "name": "@satachito/curve_fit",
+  "version": "1.0.1",
+  "description": "Bezer curve fitting.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Satachito/BezierCPs.git"
+  },
+  "keywords": [
+    "Bezier",
+    "JavaScript",
+    "Node.js",
+    "LeastSquares"
+  ],
+  "author": "Satoru Ogura",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Satachito/BezierCPs/issues"
+  },
+  "homepage": "https://github.com/Satachito/BezierCPs#readme"
+}
