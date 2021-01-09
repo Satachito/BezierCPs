@@ -39,7 +39,7 @@ Draw = () => {
 		Dot( xPQ[ 1 ], yPQ[ 1 ] )
 	}
 	C2D.fillStyle = 'black'
-	$.forEach( _ => Dot( _[ 0 ], _[ 1 ] ) )
+	$.forEach( _ => Dot( ..._ ) )
 }
 
 Clear.onclick = () => ( $.length = 0, Draw() )
