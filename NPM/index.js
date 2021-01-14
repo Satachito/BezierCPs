@@ -42,9 +42,9 @@ _ => {
 		const PQ = P * Q
 		pq += PQ
 		qp += QP
-		const PQ = _[ $ ] - u * u * u * s - t * t * t * e
-		p += P * PQ
-		q += Q * PQ
+		const R = _[ $ ] - u * u * u * s - t * t * t * e
+		p += P * R
+		q += Q * R
 	}
 
 	const dm = pp * qq - pq * qp
