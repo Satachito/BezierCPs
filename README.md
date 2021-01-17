@@ -1,5 +1,9 @@
 # curve_fit 
 
+## Abstruct
+
+An ECMAScript module which fit bezier curve for more than four points specified.
+
 ## Demo
 
 https://satachito.github.io/BezierCPs/
@@ -7,7 +11,7 @@ https://satachito.github.io/BezierCPs/
 ## Install
 
 ```
-npm install @satachito/curve_fit --save
+npm install @satachito/curve_fit
 ```
 
 ## Usage

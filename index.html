@@ -31,14 +31,14 @@ Draw = () => {
 	if ( $.length > 3 ) {
 		C2D.beginPath()
 		C2D.moveTo( ...$[ 0 ] )
-		const xPQ = CurveFit( $.map( _ => _[ 0 ] ) )
-		const yPQ = CurveFit( $.map( _ => _[ 1 ] ) )
-		C2D.bezierCurveTo( xPQ[ 0 ], yPQ[ 0 ], xPQ[ 1 ], yPQ[ 1 ], ...$[ $.length - 1 ] )
+		const [ xP, xQ ] = CurveFit( $.map( _ => _[ 0 ] ) )
+		const [ yP, yQ ] = CurveFit( $.map( _ => _[ 1 ] ) )
+		C2D.bezierCurveTo( xP, yP, xQ, yQ, ...$[ $.length - 1 ] )
 		C2D.strokeStyle = 'red'
 		C2D.stroke()
 		C2D.fillStyle = 'red'
-		Dot( xPQ[ 0 ], yPQ[ 0 ] )
-		Dot( xPQ[ 1 ], yPQ[ 1 ] )
+		Dot( xP, yP )
+		Dot( xQ, yQ )
 	}
 	C2D.fillStyle = 'black'
 	$.forEach( _ => Dot( ..._ ) )
