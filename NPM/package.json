@@ -1,6 +1,6 @@
 {
   "name": "@satachito/curve_fit",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Bezer curve fitting.",
   "main": "index.js",
   "type": "module",
