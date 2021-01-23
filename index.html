@@ -31,17 +31,17 @@ Draw = () => {
 	if ( $.length > 3 ) {
 		C2D.beginPath()
 		C2D.moveTo( ...$[ 0 ] )
-		const [ xP, xQ ] = CurveFit( $.map( _ => _[ 0 ] ) )
-		const [ yP, yQ ] = CurveFit( $.map( _ => _[ 1 ] ) )
-		C2D.bezierCurveTo( xP, yP, xQ, yQ, ...$[ $.length - 1 ] )
+		const [ pX, qX ] = CurveFit( $.map( $ => $[ 0 ] ) )
+		const [ pY, qY ] = CurveFit( $.map( $ => $[ 1 ] ) )
+		C2D.bezierCurveTo( pX, pY, qX, qY, ...$[ $.length - 1 ] )
 		C2D.strokeStyle = 'red'
 		C2D.stroke()
 		C2D.fillStyle = 'red'
-		Dot( xP, yP )
-		Dot( xQ, yQ )
+		Dot( pX, pY )
+		Dot( qX, qY )
 	}
 	C2D.fillStyle = 'black'
-	$.forEach( _ => Dot( ..._ ) )
+	$.forEach( $ => Dot( ...$ ) )
 }
 
 Clear.onclick = () => ( $.length = 0, Draw() )
