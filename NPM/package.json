@@ -1,7 +1,7 @@
 {
   "name": "@satachito/curve_fit",
-  "version": "1.0.9",
-  "description": "Bezer curve fitting.",
+  "version": "2.0.0",
+  "description": "Bezier/Conic curve fitting.",
   "main": "index.js",
   "type": "module",
   "scripts": {

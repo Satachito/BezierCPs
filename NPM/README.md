@@ -2,7 +2,13 @@
 
 ## Abstruct
 
-An ECMAScript module which fit bezier curve for more than four points specified.
+An ECMAScript module which contains:
+
+###	FitBezier:
+Fits four or more specified points to a Bezier curve.
+
+###	FitConic:
+Fits three or more specified points to a Conic curve.
 
 ## Demo
 

@@ -1,52 +1,89 @@
 <!DOCTYPE html>
 <html lang=zxx>
 <title>Bezier - LeastSquares</title>
+<style>
+body {
+;	display					: grid
+;	grid-template-columns	: 1fr 1fr
+}
+</style>
 
-<div>CLICK 4 or more points please.</div>
-<canvas id=Canvas width=500 height=500 style="border: 1px solid black"></canvas>
-<br>
-<button id=Clear>CLEAR</button>
+<div>FitConic:<br>CLICK 3 or more points please.
+	<canvas id=CONIC_C width=500 height=500 style="border: 1px solid black"></canvas>
+	<br>
+	<button id=CONIC_B>CLEAR</button>
+</div>
+
+<div>FitBezier:<br>CLICK 4 or more points please.
+	<canvas id=BEZIER_C width=500 height=500 style="border: 1px solid black"></canvas>
+	<br>
+	<button id=BEZIER_B>CLEAR</button>
+</div>
 
 <script type=module>
 
-const
-C2D = Canvas.getContext( '2d' )
-const
-Dot = ( x, y ) => C2D.fillRect( x -2, y - 2, 4, 4 )
-
-import CurveFit from './NPM/index.js'
-
-//	import CurveFit from './node_modules/@satachito/curve_fit/index.js'
-
-//	npx web-dev-server --node-resolve --open
-//	With web-dev-server node resolver:
-//	import CurveFit from '@satachito/curve_fit'
+import { FitBezier, FitConic } from './NPM/index.js'
 
 const
-$ = []
+BEZIER_$ = []
 
 const
-Draw = () => {
-	C2D.clearRect( 0, 0, Canvas.width, Canvas.height )
-	if ( $.length > 3 ) {
-		C2D.beginPath()
-		C2D.moveTo( ...$[ 0 ] )
-		const [ pX, qX ] = CurveFit( $.map( $ => $[ 0 ] ) )
-		const [ pY, qY ] = CurveFit( $.map( $ => $[ 1 ] ) )
-		C2D.bezierCurveTo( pX, pY, qX, qY, ...$[ $.length - 1 ] )
-		C2D.strokeStyle = 'red'
-		C2D.stroke()
-		C2D.fillStyle = 'red'
-		Dot( pX, pY )
-		Dot( qX, qY )
+BEZIER_Draw = () => {
+	const
+	c2D = BEZIER_C.getContext( '2d' )
+	const
+	Dot = ( x, y ) => c2D.fillRect( x -2, y - 2, 4, 4 )
+
+	c2D.clearRect( 0, 0, BEZIER_C.width, BEZIER_C.height )
+
+	BEZIER_$.forEach( _ => Dot( ..._ ) )
+
+	if ( BEZIER_$.length > 3 ) {
+		c2D.beginPath()
+		c2D.moveTo( ...BEZIER_$[ 0 ] )
+		const [ p, q ] = FitBezier( BEZIER_$ )
+		c2D.bezierCurveTo( ...p, ...q, ...BEZIER_$[ BEZIER_$.length - 1 ] )
+		c2D.strokeStyle = 'red'
+		c2D.stroke()
+		c2D.fillStyle = 'red'
+		Dot( ...p )
+		Dot( ...q )
 	}
-	C2D.fillStyle = 'black'
-	$.forEach( $ => Dot( ...$ ) )
+	c2D.fillStyle = 'black'
 }
 
-Clear.onclick = () => ( $.length = 0, Draw() )
+BEZIER_B.onclick = () => ( BEZIER_$.length = 0, BEZIER_Draw() )
+BEZIER_C.onclick = ev => ( BEZIER_$.push( [ ev.offsetX, ev.offsetY ] ), BEZIER_Draw() )
 
-Canvas.onclick = ev => ( $.push( [ ev.offsetX, ev.offsetY ] ), Draw() )
+const
+CONIC_$ = []
+
+const
+CONIC_Draw = () => {
+	const
+	c2D = CONIC_C.getContext( '2d' )
+	const
+	Dot = ( x, y ) => c2D.fillRect( x -2, y - 2, 4, 4 )
+
+	c2D.clearRect( 0, 0, CONIC_C.width, CONIC_C.height )
+
+	CONIC_$.forEach( _ => Dot( ..._ ) )
+
+	if ( CONIC_$.length > 2 ) {
+		c2D.beginPath()
+		c2D.moveTo( ...CONIC_$[ 0 ] )
+		const _ = FitConic( CONIC_$ )
+		c2D.quadraticCurveTo( ..._, ...CONIC_$[ CONIC_$.length - 1 ] )
+		c2D.strokeStyle = 'red'
+		c2D.stroke()
+		c2D.fillStyle = 'red'
+		Dot( ..._ )
+	}
+	c2D.fillStyle = 'black'
+}
+
+CONIC_B.onclick = () => ( CONIC_$.length = 0, CONIC_Draw() )
+CONIC_C.onclick = ev => ( CONIC_$.push( [ ev.offsetX, ev.offsetY ] ), CONIC_Draw() )
 
 </script>
 
